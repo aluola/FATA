@@ -1,0 +1,367 @@
+{
+  "candidate_k_ascending": [
+    16,
+    32,
+    64,
+    128,
+    192
+  ],
+  "contains_uncontracted_legacy": true,
+  "dataset_version": "legacy_paper_dataset_version",
+  "expected_sample_count": 1000,
+  "input_pattern": "ultimate_benchmark_{compressor}_{dataset}.csv",
+  "lambda": null,
+  "legacy_score_only_provenance_limitation": "score-only sources do not persist decoded answers and cannot be independently rescored; uncontracted v0 sources additionally lack dataset/model/run sidecars",
+  "protocol": "llava_clean_threshold_kprac",
+  "provenance_limitations": [
+    "UNCONTRACTED LEGACY AUDIT ONLY: source CSVs have no immutable run sidecars",
+    "decoded answers are absent, so stored scores cannot be independently rescored",
+    "dataset mapping/images, model/CLIP weights, seed, lambda, and attack protocol are unverified"
+  ],
+  "seed": null,
+  "selection_count": 16,
+  "selections": [
+    {
+      "compressor": "VisionZIP",
+      "dataset": "TextVQA_Open",
+      "full_accuracy": 0.9199400000000001,
+      "full_k": 576,
+      "retention": 0.8829706285192511,
+      "sample_count": 1000,
+      "selected_accuracy": 0.81228,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.86725,
+        "16": 0.53326,
+        "192": 0.8909199999999999,
+        "32": 0.68991,
+        "576": 0.9199400000000001,
+        "64": 0.81228
+      }
+    },
+    {
+      "compressor": "VisPruner",
+      "dataset": "TextVQA_Open",
+      "full_accuracy": 0.9199400000000001,
+      "full_k": 576,
+      "retention": 0.8978194230058482,
+      "sample_count": 1000,
+      "selected_accuracy": 0.82594,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.8819199999999999,
+        "16": 0.54226,
+        "192": 0.90627,
+        "32": 0.72693,
+        "576": 0.9199400000000001,
+        "64": 0.82594
+      }
+    },
+    {
+      "compressor": "PruMerge",
+      "dataset": "TextVQA_Open",
+      "full_accuracy": 0.9199400000000001,
+      "full_k": 576,
+      "retention": 0.84422897145466,
+      "sample_count": 1000,
+      "selected_accuracy": 0.77664,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.8179500000000001,
+        "16": 0.45929000000000003,
+        "192": 0.84494,
+        "32": 0.66296,
+        "576": 0.9199400000000001,
+        "64": 0.77664
+      }
+    },
+    {
+      "compressor": "FlowCut",
+      "dataset": "TextVQA_Open",
+      "full_accuracy": 0.9199400000000001,
+      "full_k": 576,
+      "retention": 0.8347827032197751,
+      "sample_count": 1000,
+      "selected_accuracy": 0.76795,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.84926,
+        "16": 0.44192000000000004,
+        "192": 0.8809400000000001,
+        "32": 0.62961,
+        "576": 0.9199400000000001,
+        "64": 0.76795
+      }
+    },
+    {
+      "compressor": "VisionZIP",
+      "dataset": "VQAv2_Open",
+      "full_accuracy": 0.88226,
+      "full_k": 576,
+      "retention": 0.9100491918482079,
+      "sample_count": 1000,
+      "selected_accuracy": 0.8029,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.86093,
+        "16": 0.52489,
+        "192": 0.86593,
+        "32": 0.67596,
+        "576": 0.88226,
+        "64": 0.8029
+      }
+    },
+    {
+      "compressor": "VisPruner",
+      "dataset": "VQAv2_Open",
+      "full_accuracy": 0.88226,
+      "full_k": 576,
+      "retention": 0.9104572348287352,
+      "sample_count": 1000,
+      "selected_accuracy": 0.80326,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.8602799999999999,
+        "16": 0.52396,
+        "192": 0.87395,
+        "32": 0.70461,
+        "576": 0.88226,
+        "64": 0.80326
+      }
+    },
+    {
+      "compressor": "PruMerge",
+      "dataset": "VQAv2_Open",
+      "full_accuracy": 0.88226,
+      "full_k": 576,
+      "retention": 0.8820982476820892,
+      "sample_count": 1000,
+      "selected_accuracy": 0.77824,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.80626,
+        "16": 0.49261,
+        "192": 0.84058,
+        "32": 0.66088,
+        "576": 0.88226,
+        "64": 0.77824
+      }
+    },
+    {
+      "compressor": "FlowCut",
+      "dataset": "VQAv2_Open",
+      "full_accuracy": 0.88226,
+      "full_k": 576,
+      "retention": 0.8393444109446194,
+      "sample_count": 1000,
+      "selected_accuracy": 0.74052,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.83961,
+        "16": 0.39693,
+        "192": 0.8616,
+        "32": 0.58693,
+        "576": 0.88226,
+        "64": 0.74052
+      }
+    },
+    {
+      "compressor": "VisionZIP",
+      "dataset": "ScienceQA_MC",
+      "full_accuracy": 0.944,
+      "full_k": 576,
+      "retention": 0.8633474576271186,
+      "sample_count": 1000,
+      "selected_accuracy": 0.815,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.887,
+        "16": 0.696,
+        "192": 0.911,
+        "32": 0.815,
+        "576": 0.944,
+        "64": 0.852
+      }
+    },
+    {
+      "compressor": "VisPruner",
+      "dataset": "ScienceQA_MC",
+      "full_accuracy": 0.944,
+      "full_k": 576,
+      "retention": 0.8368644067796611,
+      "sample_count": 1000,
+      "selected_accuracy": 0.79,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.893,
+        "16": 0.664,
+        "192": 0.909,
+        "32": 0.79,
+        "576": 0.944,
+        "64": 0.859
+      }
+    },
+    {
+      "compressor": "PruMerge",
+      "dataset": "ScienceQA_MC",
+      "full_accuracy": 0.944,
+      "full_k": 576,
+      "retention": 0.8411016949152543,
+      "sample_count": 1000,
+      "selected_accuracy": 0.794,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.883,
+        "16": 0.623,
+        "192": 0.892,
+        "32": 0.794,
+        "576": 0.944,
+        "64": 0.844
+      }
+    },
+    {
+      "compressor": "FlowCut",
+      "dataset": "ScienceQA_MC",
+      "full_accuracy": 0.944,
+      "full_k": 576,
+      "retention": 0.8421610169491526,
+      "sample_count": 1000,
+      "selected_accuracy": 0.795,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.853,
+        "16": 0.637,
+        "192": 0.875,
+        "32": 0.795,
+        "576": 0.944,
+        "64": 0.821
+      }
+    },
+    {
+      "compressor": "VisionZIP",
+      "dataset": "VQAv2_MC",
+      "full_accuracy": 0.98,
+      "full_k": 576,
+      "retention": 0.8397959183673469,
+      "sample_count": 1000,
+      "selected_accuracy": 0.823,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.955,
+        "16": 0.702,
+        "192": 0.969,
+        "32": 0.823,
+        "576": 0.98,
+        "64": 0.907
+      }
+    },
+    {
+      "compressor": "VisPruner",
+      "dataset": "VQAv2_MC",
+      "full_accuracy": 0.98,
+      "full_k": 576,
+      "retention": 0.8642857142857143,
+      "sample_count": 1000,
+      "selected_accuracy": 0.847,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.955,
+        "16": 0.709,
+        "192": 0.968,
+        "32": 0.847,
+        "576": 0.98,
+        "64": 0.922
+      }
+    },
+    {
+      "compressor": "PruMerge",
+      "dataset": "VQAv2_MC",
+      "full_accuracy": 0.98,
+      "full_k": 576,
+      "retention": 0.8336734693877551,
+      "sample_count": 1000,
+      "selected_accuracy": 0.817,
+      "selected_k": 32,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.926,
+        "16": 0.693,
+        "192": 0.948,
+        "32": 0.817,
+        "576": 0.98,
+        "64": 0.906
+      }
+    },
+    {
+      "compressor": "FlowCut",
+      "dataset": "VQAv2_MC",
+      "full_accuracy": 0.98,
+      "full_k": 576,
+      "retention": 0.8724489795918368,
+      "sample_count": 1000,
+      "selected_accuracy": 0.855,
+      "selected_k": 64,
+      "threshold": 0.8,
+      "trajectory": {
+        "128": 0.94,
+        "16": 0.558,
+        "192": 0.96,
+        "32": 0.739,
+        "576": 0.98,
+        "64": 0.855
+      }
+    }
+  ],
+  "source_contract_sha256": {},
+  "source_result_schema": {
+    "ScienceQA_MC/FlowCut": "legacy_uncontracted_score_only_v0",
+    "ScienceQA_MC/PruMerge": "legacy_uncontracted_score_only_v0",
+    "ScienceQA_MC/VisPruner": "legacy_uncontracted_score_only_v0",
+    "ScienceQA_MC/VisionZIP": "legacy_uncontracted_score_only_v0",
+    "TextVQA_Open/FlowCut": "legacy_uncontracted_score_only_v0",
+    "TextVQA_Open/PruMerge": "legacy_uncontracted_score_only_v0",
+    "TextVQA_Open/VisPruner": "legacy_uncontracted_score_only_v0",
+    "TextVQA_Open/VisionZIP": "legacy_uncontracted_score_only_v0",
+    "VQAv2_MC/FlowCut": "legacy_uncontracted_score_only_v0",
+    "VQAv2_MC/PruMerge": "legacy_uncontracted_score_only_v0",
+    "VQAv2_MC/VisPruner": "legacy_uncontracted_score_only_v0",
+    "VQAv2_MC/VisionZIP": "legacy_uncontracted_score_only_v0",
+    "VQAv2_Open/FlowCut": "legacy_uncontracted_score_only_v0",
+    "VQAv2_Open/PruMerge": "legacy_uncontracted_score_only_v0",
+    "VQAv2_Open/VisPruner": "legacy_uncontracted_score_only_v0",
+    "VQAv2_Open/VisionZIP": "legacy_uncontracted_score_only_v0"
+  },
+  "source_sha256": {
+    "ScienceQA_MC/FlowCut": "824fe404d2fb32a0f5c3b960db9f26f654c74c0b8576a463f08cb4d88ca23e95",
+    "ScienceQA_MC/PruMerge": "44c1f9f3f4603b42beecfdb9c035ed5ec9eed65263dbb1c85c4eccccc5bccc79",
+    "ScienceQA_MC/VisPruner": "4e3ccb89c2deda5f81669f04698c8a5700c80a62df80b2e711806571ee95407d",
+    "ScienceQA_MC/VisionZIP": "10e00fe4d6cd097a5352eb1ab21057c06dd75411c9667d7fad6708eaffec6406",
+    "TextVQA_Open/FlowCut": "3c397838065debc6d950a4d2859a6780dc96292849b4596a688380f89f558914",
+    "TextVQA_Open/PruMerge": "fed6410c06ca63a37bff85d7ed55ace737643fe59fa2886ad38d1585fd142525",
+    "TextVQA_Open/VisPruner": "c829d27c6a5fdb684d3fd4f4de99634177e191ce30d8f01f0ce9c78d313f9aa2",
+    "TextVQA_Open/VisionZIP": "5762e7acddac7eac31e930b4578a54a079c4fa4b9ad5e6d6403a9a3018ac20e2",
+    "VQAv2_MC/FlowCut": "d591d2bb75eee895edd0558f0386a30fe73a707484bf68971f253e601f295612",
+    "VQAv2_MC/PruMerge": "869343f4a3ab14b0b6a1d990edcd12fb83c6e2da511cdbb7134b015bd9af544e",
+    "VQAv2_MC/VisPruner": "f30cc12ee944a29ab287d9b95552364835ee0aef3a7d60d4f93f94c38f81a4d7",
+    "VQAv2_MC/VisionZIP": "712d34b75e7826713ac5a9dc9fb878ccb37da655ab7eb1f26c15065ae82503e8",
+    "VQAv2_Open/FlowCut": "d7a1ab7ef897d86ea2f59958cd2a5806ad9526c637872b8b95e266528d71ae9b",
+    "VQAv2_Open/PruMerge": "495613177a00f24c36014863c6d29f7c91d9782e49786b160c92846f4d91e5c4",
+    "VQAv2_Open/VisPruner": "c4dd5b51dcb83174c97df933192962e02452cfd485f2564b23e496ef41e4bae2",
+    "VQAv2_Open/VisionZIP": "c615493b6b541be302fbc67d66eeff48d0fb0a0e662951d993722d59509d1861"
+  },
+  "threshold": 0.8
+}

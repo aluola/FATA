@@ -1,0 +1,7 @@
+-r base.txt
+torch==2.1.2+cu121
+torchvision==0.16.2+cu121
+transformers==4.44.0
+accelerate==1.14.0
+safetensors==0.8.0
+sentencepiece==0.2.2

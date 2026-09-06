@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fata-iclr2027"
+version = "0.1.0"
+description = "Auditable research release for compression-triggered FATA experiments"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3"]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8,<10",
+    "Pillow==12.3.0",
+    "PyYAML==6.0.1",
+    "pandas==2.3.3",
+    "scikit-learn==1.7.2",
+]
+
+[project.scripts]
+fata-kprac = "fata.cli.kprac:main"
+fata-metrics = "fata.cli.metrics:main"
+fata-validate-paths = "fata.cli.validate_paths:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

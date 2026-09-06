@@ -1,0 +1,7 @@
+protocol: FATA-unseen-base-dir
+negative_set: clean_clip+random_clip
+direction_attack: Base
+direction_fit_includes_fata: false
+stages: [visual, projector, llm]
+metrics: [AUROC, AUPR, TPR@5FPR]
+seed: 0

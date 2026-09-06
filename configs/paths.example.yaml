@@ -1,0 +1,5 @@
+# Copy this file outside version control or export the equivalent environment variables.
+model_root: /path/to/local_models
+data_root: /path/to/fata_datasets
+output_root: /path/to/new_outputs
+cache_root: /path/to/huggingface_cache

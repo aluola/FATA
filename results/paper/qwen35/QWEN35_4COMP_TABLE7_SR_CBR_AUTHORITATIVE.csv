@@ -1,0 +1,5 @@
+Dataset,SR_percent,Clean_Full_Acc_percent,FATA_Full_Acc_percent,VisionZIP_CBR_percent,VisPruner_CBR_percent,FlowCut_CBR_percent,PruMerge_CBR_percent,Mean_CBR_percent
+TextVQA_Open,99.22,89.7,89.0,56.58,33.79,85.37,66.67,60.6
+VQAv2_Open,98.67,75.4,74.4,44.7,34.66,48.83,41.13,42.33
+ScienceQA_MC,100.21,96.5,96.7,53.28,40.79,53.07,46.2,48.34
+VQAv2_MC,98.96,96.6,95.6,35.85,31.66,37.21,33.02,34.43

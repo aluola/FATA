@@ -1,0 +1,17 @@
+attack,negative_set,detector,AUROC,AUPR,TPR@5FPR
+FATA,Clean,Maha-CLS,0.4017,0.4387,0.0350
+FATA,Clean,Maha-PatchMean,0.6566,0.6460,0.1600
+FATA,Clean,Maha-Max,0.6568,0.6461,0.1600
+FATA,Clean,Maha-Avg,0.5829,0.5827,0.0900
+FATA,Clean+Random,Maha-CLS,0.4033,0.2826,0.0350
+FATA,Clean+Random,Maha-PatchMean,0.6578,0.4870,0.1600
+FATA,Clean+Random,Maha-Max,0.6580,0.4870,0.1600
+FATA,Clean+Random,Maha-Avg,0.5847,0.4196,0.0900
+Base,Clean,Maha-CLS,0.5102,0.4990,0.0250
+Base,Clean,Maha-PatchMean,0.7872,0.7587,0.3050
+Base,Clean,Maha-Max,0.7872,0.7587,0.3050
+Base,Clean,Maha-Avg,0.7431,0.7064,0.2000
+Base,Clean+Random,Maha-CLS,0.5125,0.3352,0.0250
+Base,Clean+Random,Maha-PatchMean,0.7875,0.6208,0.2950
+Base,Clean+Random,Maha-Max,0.7875,0.6208,0.2950
+Base,Clean+Random,Maha-Avg,0.7454,0.5570,0.2000

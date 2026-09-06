@@ -1,0 +1,5 @@
+Dataset,Expected,Observed,Complete,Failed,Incomplete
+TextVQA_Open,1000,1000,998,2,0
+VQAv2_Open,1000,1000,1000,0,0
+ScienceQA_MC,1000,1000,1000,0,0
+VQAv2_MC,1000,1000,1000,0,0

@@ -1,0 +1,6 @@
+protocol: qwen35_task_aware_white_box
+compressors: [VisionZIP, VisPruner, FlowCut, PruMerge]
+weights: {task: 1.5, rank: 0.25, compressor: 0.05, full_ce: 1.0, distill: 1.0}
+attack: {epsilon: 0.00784313725490196, alpha: 0.00196078431372549, steps: 100}
+practical_fraction: {open: 0.1111111111111111, multiple_choice: 0.05555555555555555}
+shared_adversarial_image: true

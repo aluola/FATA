@@ -1,0 +1,10 @@
+Base: {epsilon: 0.00784313725490196, alpha: 0.00196078431372549, steps: 100, objective: attention_only}
+CAA: {epsilon: 0.00784313725490196, alpha: 0.00392156862745098, steps: 100, seed: 0}
+CAGE:
+  epsilon: 0.00784313725490196
+  alpha: 0.00196078431372549
+  steps: 100
+  seed: 0
+  lambda_cage: 0.005
+  k_min: 16
+  k_max: 192

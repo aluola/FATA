@@ -1,0 +1,426 @@
+{
+  "schema_version": "1.0",
+  "artifact_type": "historical_protocol_reconstruction",
+  "claim_status": "blocked_for_final_four_compressor_reproduction",
+  "paper_protocol": "FATA-unseen-base-dir",
+  "model": "LLaVA-1.5-7B",
+  "path_aliases": {
+    "legacy_source_root": "<LEGACY_SOURCE_ROOT>",
+    "historical_mlat_source": "<LEGACY_SOURCE_ROOT>/fata_detection_defense/mlat",
+    "historical_mlat_results": "<MLAT_RESULT_ROOT>",
+    "release_root": "<RELEASE_ROOT>"
+  },
+  "scope": {
+    "paper_contract_compressors": [
+      "VisionZIP",
+      "VisPruner",
+      "PruMerge",
+      "FlowCut"
+    ],
+    "historical_result_compressors": [
+      "VisionZIP",
+      "VisPruner",
+      "DivPrune",
+      "PruMerge",
+      "FlowCut"
+    ],
+    "datasets": [
+      "TextVQA_Open",
+      "VQAv2_Open",
+      "ScienceQA_MC",
+      "VQAv2_MC"
+    ],
+    "dataset_version": "legacy_paper_dataset_version",
+    "dataset_version_evidence": "Generator path resolves to the legacy mapping tree, but feature and result artifacts do not embed a mapping hash or dataset-version field.",
+    "historical_practical_k_by_dataset": {
+      "TextVQA_Open": 64,
+      "VQAv2_Open": 64,
+      "ScienceQA_MC": 32,
+      "VQAv2_MC": 32
+    },
+    "release_practical_k_override": {
+      "compressor": "FlowCut",
+      "dataset": "VQAv2_MC",
+      "historical_k": 32,
+      "release_k": 64,
+      "reason": "The per-compressor Clean-retention rule gives 0.754081633 at K32 and 0.872448980 at K64."
+    }
+  },
+  "source_provenance": {
+    "historical": [
+      {
+        "path": "<LEGACY_SOURCE_ROOT>/fata_detection_defense/mlat/mlat_core.py",
+        "sha256": "de159b418f087507a74d47aa669e5011fb63ca4496b113f5e9642a4e5dc7bd2a",
+        "role": "feature engine and clean/random/Base/FATA extraction"
+      },
+      {
+        "path": "<LEGACY_SOURCE_ROOT>/fata_detection_defense/mlat/run_mlat_method_worker.py",
+        "sha256": "25c9516887cc3347ed57834b41d351b3713be90fbf856f2a69ed8ad70988af56",
+        "role": "main feature worker"
+      },
+      {
+        "path": "<LEGACY_SOURCE_ROOT>/fata_detection_defense/mlat/generate_attack_cache_cage_caa.py",
+        "sha256": "7c15ead25710777eb29493f635424633aaaef63d2a1c25c4f19ed5442815f628",
+        "role": "method-independent CAGE/CAA PNG cache"
+      },
+      {
+        "path": "<LEGACY_SOURCE_ROOT>/fata_detection_defense/mlat/extract_cached_attack_mlat.py",
+        "sha256": "d60fff42ab09e214b4c1fc5bafbdeb1a8a0d0495509db80949e19f998fa1e44f",
+        "role": "successful cached CAGE/CAA feature route"
+      },
+      {
+        "path": "<LEGACY_SOURCE_ROOT>/fata_detection_defense/mlat/analyze_mlat_attack_ablation.py",
+        "sha256": "7a23d37d0958417b106bf0d62d8001d7e85bc80fba8e2a8192ba6b3d50d9050f",
+        "role": "direction, trajectory, cross-attack score and metric analysis"
+      }
+    ],
+    "release": {
+      "feature_engine": "src/fata/detection/mlatd/mlat_core.py",
+      "worker": "src/fata/detection/mlatd/run_mlat_method_worker.py",
+      "cached_attack_generator": "src/fata/detection/mlatd/generate_attack_cache_cage_caa.py",
+      "cached_feature_extractor": "src/fata/detection/mlatd/extract_cached_attack_mlat.py",
+      "analyzer": "src/fata/detection/mlatd/analyze_mlat_attack_ablation.py",
+      "metric_helper": "src/fata/detection/metrics.py",
+      "modifications": [
+        "Removed DivPrune from accepted release method names.",
+        "Removed source-tree sys.path injection and use package imports.",
+        "Made data, model, output and cache roots explicit.",
+        "Changed FlowCut/VQAv2_MC practical K from historical fixed K32 to Clean-derived K64.",
+        "Added a separate calibration-negative threshold helper; it is not integrated into the historical analyzer."
+      ]
+    }
+  },
+  "feature_generation": {
+    "base_seed": 0,
+    "sample_seed_formula": "base_seed * 1000003 + sample_idx",
+    "main_attacks": {
+      "epsilon": "2/255",
+      "alpha": "0.5/255",
+      "steps": 100,
+      "lambda": 1.0,
+      "target_k": 64
+    },
+    "cage": {
+      "epsilon": "2/255",
+      "alpha": "0.5/255",
+      "steps": 100,
+      "lambda": 0.005,
+      "rank_k_min": 16,
+      "rank_k_max": 192,
+      "cache_scope": "one method-independent image per dataset sample"
+    },
+    "caa": {
+      "epsilon": "2/255",
+      "alpha": "1/255",
+      "steps": 100,
+      "target_llm_layer": 1,
+      "weights": [10.0, 10.0, 2.0, 5.0],
+      "max_input_tokens": 200,
+      "cache_scope": "one method-independent image per dataset sample"
+    },
+    "image_views": {
+      "clean_clip": {
+        "label": 0,
+        "definition": "CLIP preprocessing followed by inverse normalization to clipped RGB"
+      },
+      "random_clip": {
+        "label": 0,
+        "definition": "clean_clip plus seed-controlled uniform noise in [-epsilon,+epsilon], clipped to [0,1]"
+      },
+      "base": {
+        "label": 1,
+        "role": "positive attack used for primary direction fitting"
+      },
+      "fata": {
+        "label": 1,
+        "role": "test-only positive in FATA-unseen-base-dir"
+      },
+      "cage": {
+        "label": 1,
+        "role": "unseen cross-attack test positive"
+      },
+      "caa": {
+        "label": 1,
+        "role": "unseen cross-attack test positive"
+      }
+    }
+  },
+  "stages": [
+    {
+      "name": "visual",
+      "feature_names": [
+        "vis_l06",
+        "vis_l12",
+        "vis_l18",
+        "vis_l24"
+      ],
+      "layer_numbers_1_based": [6, 12, 18, 24],
+      "capture": "forward hook on vision_model.encoder.layers[layer-1]",
+      "raw_tensor_contract": "[B,N,1024]",
+      "representative_raw_shape_inference": "[1,577,1024]",
+      "pooling": "remove CLS, mean over patch tokens, L2 normalize",
+      "persisted_vector_shape_per_sample": [1024],
+      "persisted_dtype": "float16",
+      "compression_position": "before compressor post-forward reconstruction",
+      "audit_observation": "TextVQA start-0 Visual arrays were bitwise identical across all five historical compressors for clean/random/Base/FATA."
+    },
+    {
+      "name": "projector",
+      "feature_names": [
+        "proj_in",
+        "proj_out"
+      ],
+      "capture": [
+        "forward_pre_hook on multimodal projector",
+        "forward_hook on multimodal projector"
+      ],
+      "raw_tensor_shape_inference": {
+        "proj_in": [1, 576, 1024],
+        "proj_out": [1, 576, 4096]
+      },
+      "pooling": "mean over token positions, L2 normalize",
+      "persisted_vector_shape_per_sample": {
+        "proj_in": [1024],
+        "proj_out": [4096]
+      },
+      "persisted_dtype": "float16"
+    },
+    {
+      "name": "llm",
+      "primary_feature_names": [
+        "llm_image_l08",
+        "llm_image_l16",
+        "llm_image_l24",
+        "llm_image_l32"
+      ],
+      "alternate_feature_names": [
+        "llm_last_l08",
+        "llm_last_l16",
+        "llm_last_l24",
+        "llm_last_l32"
+      ],
+      "layer_numbers_1_based": [8, 16, 24, 32],
+      "capture": "outputs.hidden_states from one LLaVA forward; no LLM forward hook",
+      "raw_tensor_contract": "[1,S,4096]",
+      "representative_feature_file_sequence_length_range": [632, 651],
+      "primary_pooling": "mean over inferred image-token span, then L2 normalize",
+      "alternate_pooling": "select final prompt token, then L2 normalize",
+      "persisted_vector_shape_per_sample": [4096],
+      "persisted_dtype": "float16",
+      "primary_cli_setting": "--llm_pool image"
+    }
+  ],
+  "compression_semantics": {
+    "nominal_historical_k_values": [32, 64],
+    "observed_projector_image_token_count": 576,
+    "all_observed_feature_rows_with_valid_image_span": 119950,
+    "description": "Each compressor selects or merges a nominal K-sized bottleneck and nearest-neighbour reconstructs it to 576 positions before Projector/LLM. Nominal K is not actual downstream sequence length."
+  },
+  "split_and_direction": {
+    "fit_index_interval": "[0,500)",
+    "test_index_interval": "[500,1000)",
+    "negative_fit_set": "clean_clip + random_clip on matched fit indices",
+    "positive_fit_set_primary": "Base on matched fit indices",
+    "matching": "intersection of sample_idx across clean, random and the relevant positive attack",
+    "feature_preprocessing": "row-wise L2 normalization",
+    "mu_negative": "mean(concat(clean_fit, random_fit))",
+    "mu_positive": "mean(Base_fit) for all primary protocols",
+    "direction": "normalize(mu_positive - mu_negative)",
+    "raw_score": "(normalize(x) - mu_negative) dot direction",
+    "layer_score": "(raw_score - mean(raw_fit_negative)) / (std(raw_fit_negative) + 1e-8)",
+    "direction_scope": "one model per compressor, dataset, nominal K and layer; deterministically refit for each protocol",
+    "fata_in_primary_direction_fit": false,
+    "serialized_direction_found": false,
+    "independent_calibration_split": false,
+    "typical_counts": {
+      "fit_positive": 500,
+      "fit_negative": 1000,
+      "test_positive": 500,
+      "test_negative": 1000
+    },
+    "caa_scienceqa_exception": {
+      "skipped_indices": [41, 88, 140, 142, 365, 431, 774, 838, 862, 958],
+      "caa_aware_fit_positive": 494,
+      "caa_test_positive": 496,
+      "caa_test_negative": 992,
+      "base_direction_fit_positive_for_caa_unseen": 500
+    }
+  },
+  "cross_attack_protocols": [
+    {
+      "name": "base_sanity",
+      "fit_attack": "base",
+      "test_attack": "base"
+    },
+    {
+      "name": "cage_unseen_base_dir",
+      "fit_attack": "base",
+      "test_attack": "cage"
+    },
+    {
+      "name": "caa_unseen_base_dir",
+      "fit_attack": "base",
+      "test_attack": "caa"
+    },
+    {
+      "name": "fata_unseen_base_dir",
+      "fit_attack": "base",
+      "test_attack": "fata"
+    }
+  ],
+  "attack_aware_upper_bounds": [
+    "cage_aware",
+    "caa_aware",
+    "fata_aware"
+  ],
+  "trajectory_and_aggregation": {
+    "trajectory_axis": "ordered representative layer depth within one forward",
+    "trajectory_formula": "trapezoidal integration of layer z-scores on a uniform [0,1] axis",
+    "stage_order": {
+      "visual": [6, 12, 18, 24],
+      "projector": ["input", "output"],
+      "llm": [8, 16, 24, 32]
+    },
+    "stage_postprocessing": "standardize trajectory score using fit-negative stage mean/std",
+    "implementation_fusion": {
+      "name": "all_level_fused",
+      "level": "sample score",
+      "formula": "mean(visual_z, projector_z, llm_z)",
+      "final_standardization": false
+    },
+    "paper_checkpoint_aggregation": {
+      "implemented_by_historical_analyzer": false,
+      "level": "metric after per-stage metric computation",
+      "formula": "unweighted mean over Visual, Projector and LLM metric rows, compressors and datasets",
+      "historical_condition_count": 20,
+      "metric_values_per_attack": 60,
+      "includes_divprune": true
+    }
+  },
+  "metrics": {
+    "auroc": "sklearn.metrics.roc_auc_score on test negative and positive scores",
+    "aupr": "sklearn.metrics.average_precision_score on test negative and positive scores",
+    "historical_tpr_at_5fpr": "maximum test-set ROC TPR among empirical ROC points with FPR <= 0.05",
+    "historical_threshold_saved": false,
+    "historical_threshold_source": "test labels and scores",
+    "release_calibration_helper": "src/fata/detection/metrics.py::fit_fpr_threshold",
+    "release_calibration_helper_integrated_into_historical_analyzer": false
+  },
+  "historical_artifacts": {
+    "base_fata_negative_features": {
+      "path": "<MLAT_RESULT_ROOT>/full_grid_limit1000_practical",
+      "npz_count": 320,
+      "csv_count": 320,
+      "row_count": 80000
+    },
+    "cage_caa_features": {
+      "path": "<MLAT_RESULT_ROOT>/attack_ablation_full_grid_limit1000_practical",
+      "npz_count": 160,
+      "csv_count": 160,
+      "row_count": 39950
+    },
+    "representative_feature": {
+      "path": "<MLAT_RESULT_ROOT>/full_grid_limit1000_practical/mlat_feat_VisionZIP_TextVQA_Open_clean_clip_k64_start0_limit250_seed0.npz",
+      "sha256": "fef891d2228005e406e67cd1e68ea57337571a52999324ec46da2397c239cef6",
+      "row_count": 250
+    },
+    "primary_result": {
+      "path": "<MLAT_RESULT_ROOT>/analyze_attack_ablation_full_grid/mlat_cross_attack_base_direction_results.csv",
+      "sha256": "d58cb9dcd5bdf0428e43a06db7f85eff398c40dfaf27783d0964032412f05303",
+      "row_count": 320
+    },
+    "primary_summary": {
+      "path": "<MLAT_RESULT_ROOT>/analyze_attack_ablation_full_grid/mlat_cross_attack_base_direction_summary.csv",
+      "sha256": "64fd63af4c6e797e88a50c904521ab366904e171a6c9a802a5aedfd123d9660e"
+    },
+    "saved_direction": null,
+    "saved_calibration_threshold": null,
+    "saved_cross_attack_per_sample_stage_scores": null,
+    "run_log": null
+  },
+  "paper_checkpoint_historical_five_compressor_stage_metric_macro": {
+    "base": {
+      "auroc": 0.934483800,
+      "aupr": 0.897300296,
+      "tpr_at_5fpr": 0.766733333
+    },
+    "cage": {
+      "auroc": 0.895409467,
+      "aupr": 0.834367900,
+      "tpr_at_5fpr": 0.661966667
+    },
+    "caa": {
+      "auroc": 0.793330345,
+      "aupr": 0.699499345,
+      "tpr_at_5fpr": 0.500739785
+    },
+    "fata": {
+      "auroc": 0.812939300,
+      "aupr": 0.705703902,
+      "tpr_at_5fpr": 0.480700000
+    },
+    "base_auroc_rounding_note": "Direct mean rounds to 0.934 at three decimals. Rounding stage means to 0.997, 0.930 and 0.877 before averaging yields 0.935."
+  },
+  "posthoc_four_compressor_stage_metric_macro_not_a_rerun": {
+    "base": {
+      "auroc": 0.951761,
+      "aupr": 0.917723,
+      "tpr_at_5fpr": 0.801167
+    },
+    "cage": {
+      "auroc": 0.912583,
+      "aupr": 0.854354,
+      "tpr_at_5fpr": 0.694125
+    },
+    "caa": {
+      "auroc": 0.802405,
+      "aupr": 0.720978,
+      "tpr_at_5fpr": 0.533496
+    },
+    "fata": {
+      "auroc": 0.827989,
+      "aupr": 0.723679,
+      "tpr_at_5fpr": 0.497167
+    }
+  },
+  "historical_five_compressor_sample_score_fusion_macro": {
+    "base": {
+      "auroc": 0.990381,
+      "aupr": 0.982168,
+      "tpr_at_5fpr": 0.960600
+    },
+    "cage": {
+      "auroc": 0.991855,
+      "aupr": 0.983070,
+      "tpr_at_5fpr": 0.968200
+    },
+    "caa": {
+      "auroc": 0.930035,
+      "aupr": 0.874512,
+      "tpr_at_5fpr": 0.697724
+    },
+    "fata": {
+      "auroc": 0.934721,
+      "aupr": 0.869969,
+      "tpr_at_5fpr": 0.677100
+    }
+  },
+  "known_blockers": [
+    "Historical features and paper checkpoint include DivPrune.",
+    "Historical fixed practical K assigns FlowCut/VQAv2_MC to K32 instead of Clean-derived K64.",
+    "Paper checkpoint aggregation is absent from the analyzer and differs from all_level_fused.",
+    "No independent calibration split or saved 5% FPR threshold exists.",
+    "No fitted direction, scaler or matched per-sample cross-attack score artifact is serialized.",
+    "No dataset mapping hash/version is embedded in historical feature or result artifacts.",
+    "No ML-ATD run log or frozen execution environment was found.",
+    "The exact HiddenDetect upstream URL, commit, license and adaptation diff were not found.",
+    "The release general-worker CAGE/CAA cache helper and dedicated method-independent cache layout are not interoperable.",
+    "The historical mlat_core CAGE/CAA branch calls undefined cache functions and its full-row completeness check conflicts with permitted partial ScienceQA/CAA chunks; historical results used the standalone extractor instead.",
+    "GPU feature-hook and original-versus-release non-regression status must be read from the release audit test report."
+  ],
+  "tests": {
+    "metric_unit": "tests/unit/test_detection_metrics.py",
+    "synthetic_chain": "tests/integration/test_mlatd_smoke.py",
+    "coverage_limit": "The synthetic chain is not an actual model-hook, historical-NPZ, paper-macro, or GPU non-regression test."
+  }
+}

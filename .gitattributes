@@ -1,0 +1,17 @@
+# Keep immutable result summaries byte-for-byte stable across checkouts. Their
+# existing CSV line endings are intentional release-artifact bytes.
+results/paper/**/*.csv -text whitespace=cr-at-eol
+
+# Preserve reviewed source bytes that contain pre-existing end-of-line spacing.
+# Other paths retain Git's default whitespace checks.
+src/fata/data/unique_builder/generate_reports.py whitespace=-blank-at-eol,-blank-at-eof
+src/fata/runtimes/internvl35/compression/flowcut.py whitespace=-blank-at-eof
+src/fata/runtimes/internvl35/compression/prumerge.py whitespace=-blank-at-eof
+src/fata/runtimes/internvl35/compression/reconstruction.py whitespace=-blank-at-eof
+src/fata/runtimes/internvl35/compression/visionzip.py whitespace=-blank-at-eof
+src/fata/runtimes/internvl35/compression/vispruner.py whitespace=-blank-at-eof
+src/fata/runtimes/llava/_run_llava_caa_impl.py whitespace=-blank-at-eol,-blank-at-eof
+src/fata/runtimes/llava/_run_llava_cage_impl.py whitespace=-blank-at-eol,-blank-at-eof
+src/fata/runtimes/llava/_run_llava_fata_impl.py whitespace=-blank-at-eol,-blank-at-eof
+src/fata/runtimes/llava/_run_llava_objective_ablation_impl.py whitespace=-blank-at-eol,-blank-at-eof
+src/fata/runtimes/llava/compression_zoo.py whitespace=-blank-at-eol,-blank-at-eof

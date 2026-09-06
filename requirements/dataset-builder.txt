@@ -1,0 +1,4 @@
+# Unique-dataset construction uses the audited LLaVA stack plus source loaders.
+-r llava.txt
+datasets==2.19.2
+requests==2.33.1

@@ -1,0 +1,5 @@
+objectives: [attention_only, semantic_only, full_fata]
+alpha_over_255: [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75]
+lambda_semantic: [0.5, 1.0, 2.0, 4.0, 8.0]
+# The audit found complete objective results, but no complete artifact set for
+# the requested alpha sweep and only a mismatched historical lambda sweep.

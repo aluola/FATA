@@ -1,0 +1,15 @@
+{
+  "status": "missing_required_artifacts",
+  "dataset_version": "unknown_needs_review",
+  "formal_pipeline_found": false,
+  "available_items": [],
+  "required_items_not_found": [
+    "case selection rule and selected sample IDs",
+    "paired Clean/FATA images",
+    "per-compressor and per-budget selected token or patch indices",
+    "prediction text and correctness records",
+    "panel-generation intermediate data"
+  ],
+  "publication_claim_allowed": false,
+  "public_reference": "../../../docs/KNOWN_LIMITATIONS.md"
+}

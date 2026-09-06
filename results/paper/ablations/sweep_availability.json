@@ -1,0 +1,21 @@
+{
+  "dataset_version": "legacy_paper_dataset_version",
+  "paper_contract": {
+    "alpha_over_255": [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75],
+    "lambda": [0.5, 1.0, 2.0, 4.0, 8.0]
+  },
+  "alpha_sweep": {
+    "status": "not_found",
+    "raw_predictions_found": false,
+    "aggregation_found": false
+  },
+  "lambda_sweep": {
+    "status": "historical_partial_only_not_paper_contract",
+    "surviving_values": [0.1, 0.5, 1.0, 2.0, 5.0, 10.0],
+    "scope": "VisionZIP on TextVQA-Open only",
+    "sample_count_note": "lambda=10 has 538 rows; the other surviving cells have 1000",
+    "included_as_formal_result": false
+  },
+  "publication_claim_allowed": false,
+  "reference": "../../../docs/KNOWN_LIMITATIONS.md"
+}

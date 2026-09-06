@@ -1,0 +1,13 @@
+protocol: llava_compressor_agnostic_gray_box
+model: llava-1.5-7b-hf
+vision_encoder: clip-vit-large
+compressors: [VisionZIP, VisPruner, PruMerge, FlowCut]
+budgets: [576, 192, 128, 64, 32, 16]
+attack:
+  epsilon: 0.00784313725490196
+  alpha: 0.00196078431372549
+  steps: 100
+  random_start: true
+  lambda_semantic: 1.0
+  clean_top_m: 64
+  fixed_target_mask: true

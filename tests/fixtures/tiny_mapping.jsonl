@@ -1,0 +1,2 @@
+{"sample_id":"open-1","image_filename":"one.png","question":"How many?","answers":["two","2","2"],"type":"open"}
+{"sample_id":"mc-1","image_filename":"two.png","question":"Choose.","answers":["B"],"ground_truth_text":"blue","type":"multiple_choice","options":["red","blue"]}

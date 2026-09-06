@@ -1,0 +1,1 @@
+"""Mahalanobis-Max detector runtime."""

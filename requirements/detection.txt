@@ -1,0 +1,5 @@
+# The detector runtimes use the same LLaVA/CLIP stack as the attack runtime.
+-r llava.txt
+scipy==1.15.3
+scikit-learn==1.7.2
+pandas==2.3.3

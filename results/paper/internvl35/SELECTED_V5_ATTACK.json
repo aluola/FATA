@@ -1,0 +1,62 @@
+{
+  "alpha": 0.00196078431372549,
+  "attack": "TA-FATA-Practical",
+  "budget_weights": {
+    "multiple_choice": {
+      "1/18": 1.0,
+      "1/3": 0.2,
+      "1/9": 0.4
+    },
+    "open": {
+      "1/3": 0.4,
+      "1/9": 1.0,
+      "2/9": 0.25
+    },
+    "scale": 1.0
+  },
+  "compressor_family_losses": {
+    "attention_family": [
+      "VisionZIP",
+      "PruMerge",
+      "VisPruner(attn part)"
+    ],
+    "diversity_family": [
+      "DivPrune",
+      "VisPruner"
+    ],
+    "relation_family": [
+      "FlowCut"
+    ]
+  },
+  "epsilon": 0.00784313725490196,
+  "full_accuracy_role": "diagnostic_only",
+  "lambda_sem": 0.05,
+  "loss_weights": {
+    "w_attn": 1.0,
+    "w_div": 2.0,
+    "w_pcd": 6.0,
+    "w_rank": 3.0,
+    "w_red": 1.5,
+    "w_rel": 2.0
+  },
+  "no_sr_gate": true,
+  "qualification": {
+    "candidate": "V5-E",
+    "macro_one_third_gap_pp": 9.383333333333333,
+    "macro_practical_gap_pp": 13.575,
+    "note": "CASE A: qualification best macro practical gap >= 10 pp; configuration locked without further tuning.",
+    "score": 18.111875
+  },
+  "selected_utc": "2026-08-23T16:02:35Z",
+  "steps": 100,
+  "term_scales": {
+    "attn": 40.0,
+    "div": 1.0,
+    "pcd": 1.0,
+    "rank": 20.0,
+    "red": 1.0,
+    "rel": 1.0,
+    "sem": 1.0
+  },
+  "variant": "V5"
+}
