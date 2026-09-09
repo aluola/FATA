@@ -1,4 +1,4 @@
-# FATA: ICLR 2027 Code Release
+# FATA
 
 FATA studies **compression-triggered adversarial failure** in vision-language
 models: an image is optimized to preserve useful behavior with the full visual
